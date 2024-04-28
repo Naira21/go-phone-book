@@ -1,4 +1,4 @@
-package userModel
+package userEntity
 
 type User struct {
 	id      int

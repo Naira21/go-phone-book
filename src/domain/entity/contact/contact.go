@@ -1,4 +1,4 @@
-package contactModel
+package contactEntity
 
 type Contact struct {
 	userId  int

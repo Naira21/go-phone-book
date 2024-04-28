@@ -6,7 +6,7 @@ import (
 
 type (
 	UserCreateRepository interface {
-		CreateUser(user *userModel.User) error
+		CreateUser(user *userEntity.User) error
 	}
 
 	Service struct {
@@ -21,7 +21,7 @@ func NewService(repository UserCreateRepository) *Service {
 }
 
 func (s *Service) Create(name, surname string) error {
-	newUser := userModel.Create(name, surname)
+	newUser := userEntity.Create(name, surname)
 
 	return s.repository.CreateUser(newUser)
 }

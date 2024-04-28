@@ -4,8 +4,8 @@ import (
 	"gorm.io/gorm"
 )
 
-const TableUser = "user"
-const TableContact = "contact"
+const tableUser = "user"
+const tableContact = "contact"
 
 type (
 	Repository struct {

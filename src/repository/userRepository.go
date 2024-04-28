@@ -11,13 +11,13 @@ type (
 	}
 )
 
-func (r *Repository) CreateUser(user *userModel.User) error {
+func (r *Repository) CreateUser(user *userEntity.User) error {
 	newUser := &User{
 		Name:    user.Name(),
 		Surname: user.Surname(),
 	}
 
-	err := r.db.Table(TableUser).Debug().Create(newUser).Error
+	err := r.db.Table(tableUser).Debug().Create(newUser).Error
 	if err != nil {
 		return err
 	}

@@ -14,7 +14,7 @@ type (
 		service userCreateService
 	}
 
-	user struct {
+	User struct {
 		Name    string `json:"name"`
 		Surname string `json:"surname"`
 	}
@@ -27,7 +27,7 @@ func NewController(service userCreateService) *UserCreateController {
 }
 
 func (c *UserCreateController) CreateUser(w http.ResponseWriter, r *http.Request) {
-	var newUser user
+	var newUser User
 
 	err := json.NewDecoder(r.Body).Decode(&newUser)
 	if err != nil {
