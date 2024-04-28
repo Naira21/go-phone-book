@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"go-phone-book/config"
 	"go-phone-book/infrastructure/dbconnection"
 	"go-phone-book/src/application/createService"
-	"go-phone-book/src/interface/createController"
+	"go-phone-book/src/interface/user/create"
 	"go-phone-book/src/repository"
+	"net/http"
 
 	"log"
 
@@ -33,10 +33,14 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	repository := repository.NewRepository(dbConnection)
-	service := createService.NewService(*repository)
-	controller := createController.NewController(*service)
 
-	fmt.Println(controller)
-	// http.HandleFunc("/", repository.Create(dbConnection))
+	repository := repository.NewRepository(dbConnection)
+	service := createService.NewService(repository)
+	controller := createUser.NewController(service)
+
+	createUserController := createUser.UserCreateController(*controller)
+
+	http.HandleFunc("/create-user", createUserController.CreateUser)
+
+	http.ListenAndServe(":8080", nil)
 }

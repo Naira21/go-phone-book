@@ -4,6 +4,9 @@ import (
 	"gorm.io/gorm"
 )
 
+const TableUser = "user"
+const TableContact = "contact"
+
 type (
 	Repository struct {
 		db *gorm.DB
